@@ -11,7 +11,12 @@ class MoviesController < ApplicationController
   end
 
   def index
+    @cssClass = "hilite"
     @movies = Movie.all
+    if !(params[:sort_by].nil?)
+      @movies = Movie.order(params[:sort_by])
+    end
+      
   end
 
   def new
