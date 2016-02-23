@@ -29,6 +29,27 @@ class MoviesController < ApplicationController
     redirect_to movies_path
   end
 
+  def updateMovie
+    
+  end
+
+  def updateMovieFunc
+
+    if (params[:movie][:title] && params[:movie][:rating])
+      @movie = Movie.find_by_title(params[:movie][:title]) 
+      if (@movie.nil?)
+        flash[:notice] = "Movie doesn't exist, soz"
+      else
+        @movie.update_attributes!(movie_params)
+        flash[:notice] = "#{@movie.title} was successfully updated."
+      end
+    else 
+      flash[:notice] = "Fill in all the fields!"
+    end
+    redirect_to updateMovie_movies_path
+  end
+  
+
   def edit
     @movie = Movie.find params[:id]
   end
