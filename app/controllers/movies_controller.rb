@@ -32,6 +32,24 @@ class MoviesController < ApplicationController
   def updateMovie
     
   end
+  
+  def deleteByRating
+    if (params.has_key?(:movie))
+      @movies = Movie.where(rating: params[:movie][:rating])
+      @movies.destroy_all
+      flash[:notice] = "Deleted!"
+      redirect_to deleteByRating_movies_path
+    end
+  end
+  
+  def deleteByTitle
+    if (params.has_key?(:movie))
+      @movies = Movie.where(title: params[:movie][:title])
+      @movies.destroy_all
+      flash[:notice] = "Deleted!"
+      redirect_to deleteByTitle_movies_path
+    end
+  end
 
   def updateMovieFunc
 

@@ -21,6 +21,12 @@ Rails.application.routes.draw do
     collection do
       post 'updateMovieFunc'
     end
+    collection do
+      get 'deleteByTitle'
+    end
+    collection do
+      get 'deleteByRating'
+    end
   end
   
   # Example resource route with options:
