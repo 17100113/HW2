@@ -1,12 +1,12 @@
 -#  This file is app/views/movies/index.html.haml
 %h1 All Movies
-
+<section class="ib-container" id="ib-container">
 %table#movies
   %thead
     %tr
-      %th= link_to "Movie Title", { :sort_by => "title" }, :class => @cssClass
+      %th= link_to "Movie Title", { :sort_by => "title" }, :class => "nice-link"
       %th  Rating 
-      %th=  link_to "Release",  { :sort_by => "release_date" }, :class => @cssClass
+      %th=  link_to "Release",  { :sort_by => "release_date" }, :class => "nice-link"
       %th  More Info
   %tbody
     - @movies.each do |movie|
@@ -15,6 +15,16 @@
         %td= movie.rating
         %td= movie.release_date
         %td= link_to "More about #{movie.title}", movie_path(movie)
+</section>
+<br/>
+= form_tag root_path, :method => :get do
+  
+  - @all_ratings.each do |rating|
+    = rating
+    = check_box_tag "ratings[#{rating}]", 1, @selectedRatings.include?(rating) ? true : false 
+  = hidden_field(:ratings, :hidden)
+  = submit_tag 'Refresh'
+<br/>
 
 = link_to 'Add new movie', new_movie_path
 |

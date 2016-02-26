@@ -11,8 +11,33 @@ class MoviesController < ApplicationController
   end
 
   def index
+    @all_ratings = Movie.all_ratings
     @cssClass = "hilite"
     @movies = Movie.all
+    @selectedRatings = @all_ratings
+    if (!params[:ratings].nil? && session[:ratings].nil?)
+        session[:ratings] = params[:ratings]
+    end
+    if (params[:ratings].nil? && !session[:ratings].nil?)
+        params[:ratings] = session[:ratings]
+    end
+    
+    if (!params[:ratings].nil?) 
+      
+      arr = []
+      params[:ratings].each {|key, value| arr.push(key) }
+      
+      @movies = Movie.where(rating: arr)
+      @selectedRatings = arr
+    end
+    
+    if (!params[:sort_by].nil? && session[:sort_by].nil?)
+        session[:sort_by] = params[:sort_by]
+    end
+    if (params[:sort_by].nil? && !session[:sort_by].nil?)
+        params[:sort_by] = session[:sort_by]
+    end
+    
     if !(params[:sort_by].nil?)
       @movies = Movie.order(params[:sort_by])
     end
