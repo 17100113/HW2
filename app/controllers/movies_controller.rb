@@ -22,6 +22,10 @@ class MoviesController < ApplicationController
         params[:ratings] = session[:ratings]
     end
     
+    if (!params[:ratings].nil? && !session[:ratings].nil?)
+        session[:ratings] = params[:ratings]
+    end
+    
     if (!params[:ratings].nil?) 
       
       arr = []
@@ -39,7 +43,7 @@ class MoviesController < ApplicationController
     end
     
     if !(params[:sort_by].nil?)
-      @movies = Movie.order(params[:sort_by])
+      @movies = Movie.order(params[:sort_by]).where(rating: @selectedRatings)
     end
       
   end

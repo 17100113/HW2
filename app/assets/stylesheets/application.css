@@ -15,46 +15,41 @@
  */
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:300,700);
 
-a:hover {
-  color: #444E7F;
-}
+/*a:hover {*/
+/*  color: #444E7F;*/
+/*}*/
 
 a {
   color: #7A8DE5;  
+  text-decoration: none;
+  position: relative;
 }
 
-a.nice-link {
-  position: relative;
-  color: #168dff;
+/*a:after {*/
+/*  text-align: justify;*/
+/*  display: inline-block;*/
+/*  content: attr(data-text);*/
+/*  position: absolute;*/
+/*  left: 0;*/
+/*  top: 0;*/
+/*  white-space: nowrap;*/
+/*  overflow: hidden;*/
+/*  color: #3fc1ff;*/
+/*  min-height: 100%;*/
+/*  width: 0;*/
+/*  max-width: 100%;*/
+/*  background: #444E7F;*/
+/*  -moz-transition: .3s;*/
+/*  -o-transition: .3s;*/
+/*  -webkit-transition: .3s;*/
+/*  transition: .3s;*/
+/*}*/
+a:hover {
+  color: #444E7F;
 }
-a.nice-link:after {
-  text-align: justify;
-  display: inline-block;
-  content: attr(data-text);
-  position: absolute;
-  left: 0;
-  top: 0;
-  white-space: nowrap;
-  overflow: hidden;
-  color: #3fc1ff;
-  min-height: 100%;
-  width: 0;
-  max-width: 100%;
-  background: #262626;
-  -moz-transition: .3s;
-  -o-transition: .3s;
-  -webkit-transition: .3s;
-  transition: .3s;
-}
-a.nice-link:hover {
-  color: #168dff;
-}
-a.nice-link:hover:after {
-  width: 100%;
-}
-a {
-  text-decoration: none;
-}
+/*a:hover:after {*/
+/*  width: 100%;*/
+/*}*/
 
 tbody:hover a {
   color: transparent;
